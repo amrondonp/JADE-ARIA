@@ -30,6 +30,7 @@ import jade.lang.acl.ACLMessage;
 import jade.proto.ContractNetInitiator;
 import jade.domain.FIPANames;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 import java.util.Enumeration;
@@ -48,8 +49,19 @@ public class MyContractNetAgentInitiatior extends Agent {
 	
 	protected void setup() {
 		Object[] args = getArguments();
-		System.out.println((int)args[0] + " " + (boolean)args[1]);
+		ArrayList<String> collums = (ArrayList<String>)args[0];
+		String s = "";
+		s += "El agente " + this.getName() + " Recibio " + collums.size() + " elementos ";
+		s += "Los elementos son: ";
+		for(String str : collums) {
+			s += str + " ";
+		}
 		
+		if(Integer.parseInt(collums.get(0)) < 4) {
+			s += "EL NUMERO ES MENOR QUE 4";
+		}
+		
+		System.out.println(s);
 		
 //  	// Read names of responders as arguments
 //  	Object[] args = getArguments();
